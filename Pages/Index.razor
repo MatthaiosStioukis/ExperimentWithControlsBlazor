@@ -20,6 +20,21 @@
             <input type="range" @onchange="UpdateValue" />
         </div>
     </div>
+    <div class="row mt-2">
+        <div class="col-sm-6">
+            Click a button:
+        </div>
+        <div class="col-sm-6 btn-group" role="group">
+            @for (var buttonNumber = 1; buttonNumber <= 6; buttonNumber++)
+            {
+                string valueToDisplay = $"Button #{buttonNumber}";
+                <button type="button" class="btn btn-secondary" @onclick="() => ButtonClick(valueToDisplay)">
+                    @buttonNumber
+                </button>
+
+            }
+        </div>
+    </div>
     <div class="row mt-5">
         <h2>
             Here's the value: <strong>@DisplayValue</strong>
@@ -48,5 +63,11 @@ Let's add this c# code so the slider does some action when being used.
         {
             DisplayValue = e.Value.ToString();
         }
+    }
+
+    // The @onclick event handler will call this method to make some changer to the DisplayValue.
+    private void ButtonClick(string displayValue)
+    {
+        DisplayValue = displayValue;
     }
 }
